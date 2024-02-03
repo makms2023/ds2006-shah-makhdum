@@ -1,0 +1,85 @@
+---
+title: "Homework 3"
+output: html_document
+date: "2024-02-03"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+```{r}
+name<-"Makhdum Mourad Shah"
+ls()
+v1 <- c(TRUE, FALSE, TRUE, FALSE, TRUE)
+v2 <- c(1L, 2L, 3L, 4L, 5L)
+v3 <- c(1.1, 2.2, 3.3, 4.4, 5.5)
+v4 <- c("apple", "banana", "watermelon", "mango", "grape")
+V <- list(v1, v2, v3, v4)
+str(V)
+newmatrix <- matrix(data = 1:20, nrow = 4, ncol = 5)
+newsequence <- seq(from = 22, to = 44)
+newarray <- cbind(newsequence)
+element <- v3[3]
+d1 <- read.csv("http://hbiostat.org/data/repo/2.20.Framingham.csv")
+fifth_row <- d1[5, ]
+
+bmi<- d1$bmi
+```
+
+## Purpose of this Function:
+### The pipe operator allow us to do multiple operations in a concise manner without having to save the intermediate results. 
+
+```{r}
+
+require(dplyr)
+# Old way
+sum(log(sqrt(select(d1,age)),base=10))
+
+# OG magrittr pipe
+d1 %>% 
+  pull(age)  %>% 
+  sqrt  %>% 
+  log(base=10)  %>% 
+  sum
+
+d1 %>% 
+  lm(sbp ~ dbp, data = .)  # Use the dot if the piped objects needs to go to an input other than the first
+
+d1 %>% 
+  split(.$sex) %>%  # Can use the input multiple times
+  lapply(function(x){x$age %>% mean})
+
+# New base R pipe
+d1 |> 
+  pull(age) |> 
+  sqrt() |> # Note the parentheses have to be used
+  log(base=10) |> 
+  sum()
+
+d1 |>  
+  lm(sbp ~ dbp, data = _) # Use `_` instead of `.` with new pipe
+```
+
+## Prime UVA phone numbers in the form (434) 924-???
+
+```{r}
+prime <- function(x){
+  ps <- primes::generate_primes(min = 2, max = ceiling(sqrt(x)))
+  for(i in ps) if(x%%i == 0) return(FALSE)
+  TRUE
+}
+
+k <- 0
+for(i in 0:9999) {
+  phone_number <- 4349240000 + i
+  if (prime(phone_number)) {
+    k <- k + 1
+  }
+}
+k
+```
+
+
