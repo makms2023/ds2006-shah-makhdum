@@ -1,0 +1,44 @@
+---
+title: "HW8"
+output: md_document
+date: "2024-02-15"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 
+
+```{r}
+require(dplyr)
+require(pander)
+d1 <- read.csv("https://tgstewart.cloud/soda.csv") |>
+  filter(!is.na(cola) & !is.na(sugar))
+descr::CrossTable(
+      d1$sugar
+    , d1$cola
+    , prop.chisq = FALSE
+) |>
+pander(split.table=Inf)
+```
+
+## 1.If the proportions in the contingency table represented probabilities, would drink preference and sugar preference be independent?
+### Drink preference and sugar preference would not be independent because for instance P(Cola|Regular) would not be equal to P(Cola)
+
+## 2. Is a preference for Cola positively or negatively or not associated with a preference for regular sugar? 
+### A preference for Cola is negatively associated with a preference for regular sugar. 
+
+## 3.Consider the population of individuals who suffer from migraine headaches. What can you conclude from this data about the effectiveness of the more toxic treatment? 
+### We can’t conclude anything because we haven't been able to control any of the factors which are affecting subject behaviour. This is because this is an observational study and not an experimental one. For instance, it could be possible that some people moved from less toxic to more toxic treatments because the less toxic ones didn’t work. Another option would be to develop an experiment that observes behaviour before and after treatments. 
+
+
+
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
