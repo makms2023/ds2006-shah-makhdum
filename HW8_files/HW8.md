@@ -118,10 +118,3 @@ Total(%)</td>
 ## 3.Consider the population of individuals who suffer from migraine headaches. What can you conclude from this data about the effectiveness of the more toxic treatment?
 
 ### We can’t conclude anything because we haven’t been able to control any of the factors which are affecting subject behaviour. This is because this is an observational study and not an experimental one. For instance, it could be possible that some people moved from less toxic to more toxic treatments because the less toxic ones didn’t work. Another option would be to develop an experiment that observes behaviour before and after treatments.
-
-You can also embed plots, for example:
-
-![](HW8_files/figure-markdown_strict/pressure-1.png)
-
-Note that the `echo = FALSE` parameter was added to the code chunk to
-prevent printing of the R code that generated the plot.
