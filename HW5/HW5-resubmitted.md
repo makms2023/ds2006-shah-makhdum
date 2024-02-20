@@ -14,7 +14,7 @@
     ##       80 
     ## 0.000001
 
-## 2a. Create a figure which visualizes the long-run proportions.
+## 2a. Create a figure which visualizes the long-run proportions for the big well investment opportunity.
 
     (big_well(1E6) |>
       table() |>
@@ -29,8 +29,8 @@
       proportions())
 
 ![](HW5-resubmitted_files/figure-markdown_strict/unnamed-chunk-4-1.png)
-\## 2b. Create a figure which visualizes the long-run proportions for
-the small well investment opportunity.
+
+## 2b.Create a figure which visualizes the long-run proportions for the small well investment opportunity.
 
     barplot(sma_well(1E6) |>
       table() |>
