@@ -1,4 +1,4 @@
-## 1. Using simulation, create a script that will solve the following riddle.
+## 1. Using simulation, create a script that will solve the following riddle(for class size of 45).
 
     generate_class <- function(class_size){
 
@@ -20,6 +20,29 @@
     mean(replicates)
 
     ## [1] 0.94017
+
+## 1. Using simulation, create a script that will solve the following riddle(for class size of 55).
+
+    generate_class <- function(class_size){
+
+       sample(1:365, class_size, replace=TRUE)
+
+    }
+     
+    check_birthday <- function(birthday_roster){
+
+      birthday_roster |> duplicated() |> any()
+
+    }
+
+    set.seed(230583)
+
+    R <- 100000
+
+    replicates <- replicate(R, generate_class(55) |> check_birthday())
+    mean(replicates)
+
+    ## [1] 0.98639
 
 ## 2. What does set.seed do in the script?
 
@@ -68,7 +91,7 @@ ignores leap years.
     fd1 <- replicate(R, first_duplicate())
     plot(ecdf(fd1), main = "Probability of shared birthday", xlab = "Class size")
 
-![](HW6_files/figure-markdown_strict/unnamed-chunk-3-1.png) Both
+![](HW6_files/figure-markdown_strict/unnamed-chunk-4-1.png) Both
 versions approximately give the same answer
 
 ## 6. Add vertical and horizontal lines to the plot generated in version 2 which show your estimated probability generated with version 1 code.
@@ -77,8 +100,9 @@ versions approximately give the same answer
     plot(ecdf(fd1), main = "Probability of shared birthday", xlab = "Class size")
 
     abline(h = estimated_probability, col = "blue")
+    abline(v = 28, col = "red", lty = 2)
 
-![](HW6_files/figure-markdown_strict/unnamed-chunk-4-1.png)
+![](HW6_files/figure-markdown_strict/unnamed-chunk-5-1.png)
 
 ## 7.Look at the first\_duplicate function. What does the function return? Use ?which and ?min to read the documentation of what these commands do. (Answer: It returns the first instance of \_\_\_\_\_.)
 
