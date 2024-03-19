@@ -1,0 +1,53 @@
+---
+title: "HW11"
+output: md_document
+date: "2024-03-19"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## HW 11
+
+1. 
+
+|                            | Cancer     |   Not Cancer  | Total |
+| -------------------------- | ----------- | ------------ | ------|
+| **Test= + **               |  ptp     |    (1-p)(1-tn)     | ptp + (1-p)(1-tn) |
+| &nbsp;&nbsp;&nbsp; Row     |  ptp/(ptp+(1-p)(1-tn))     |   (1-p)(1-tn)/(ptp+(1-p)(1-tn))    |       |
+| &nbsp;&nbsp;&nbsp; Col     |  tp    |    1-tn   |       |
+| **Test= - **               |  p(1-tp)    |    tn(1-p)     | p(1-tp)+tn(1-p) |
+| &nbsp;&nbsp;&nbsp; Row     |   p(1-tp)/(p(1-tp)+tn(1-p))  | tn(1-p)/(p(1-tp)+tn(1-p))     |       |
+| &nbsp;&nbsp;&nbsp; Col     |  1-tp    |    tn   |       |
+| Total                      |  p    |    1-p    | 1 |
+
+2. P(Cancer|+) = ptp/(ptp+(1-p)(1-tn)) = (0.01*0.9)/((0.01*0.9)+(1-0.01)(1-0.8)) = 0.009/0.191 = 0.047
+
+
+
+3. 
+
+```{r}
+calculate_ppv <- function(cancer_incidence) {
+  sensitivity <- 0.9
+  specificity <- 0.8
+  ppv <- sensitivity * cancer_incidence / (sensitivity * cancer_incidence + (1 - specificity) * (1 - cancer_incidence))
+  return(ppv)
+}
+
+
+cancer_incidence <- seq(0, 1, by = 0.01)
+
+
+ppv_values <- sapply(cancer_incidence, calculate_ppv)
+
+plot(cancer_incidence, ppv_values, type = "l",
+     xlab = "Cancer Incidence (P(Cancer))", ylab = "Positive Predictive Value (PPV)",
+     main = "Effect of Cancer Incidence on Positive Predictive Value",
+     ylim = c(0, 1))
+
+
+legend("bottomright", legend = "PPV", col = "black", lty = 1)
+
+```
