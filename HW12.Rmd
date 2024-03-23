@@ -1,0 +1,33 @@
+---
+title: "HW12"
+output: md_document
+date: "2024-03-22"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+d1 <- read.csv("Sample.csv")
+head(d1)
+```
+
+## ID: Nominal variable (unique identifier for each individual)
+
+## Gender: Nominal variable (Male/Female)
+
+## Age: Ratio variable (continuous)
+
+## Education_Level: Ordinal variable (High School Diploma, Some College, Associate's Degree, Bachelor's Degree, Master's Degree, PhD)
+
+## Income: Ratio variable (continuous)
+
+## Height: Ratio variable (continuous)
+
+## Weight: Ratio variable (continuous)
+
+## Smoker: Binary variable (Yes/No)
+
+## Test Score: Interval variable
