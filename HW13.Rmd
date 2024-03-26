@@ -1,0 +1,62 @@
+---
+title: "HW13"
+output: md_document
+date: "2024-03-26"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## HW 13
+
+1.The following is the contingency table for treatment and recovery that would have resulted had treatment allocation been balanced among gender groups. 
+
+|  | |Recovered | Unrecovered |  | Rate P(recovered!treatment) |                      
+| -------------------------- | ----------- | ------------ | ------|------------ | ------|
+| All | Active |     0.2   |  0.3  |    0.5  | 0.4 |
+|  | Placebo |     0.25    |  0.25    |    0.5  | 0.5 |
+| Male | Active |     0.3    |  0.2    |    0.5  | 0.6 |
+|  | Placebo |     0.35    |  0.15    |    0.5  | 0.7 |
+| Femal | Active |     0.1    |  0.4    |    0.5  | 0.2 |
+|  | Placebo |     0.15    |  0.35    |    0.5  | .3 |
+
+
+2. The same table if twice as many females were likely as males to join the trial. 
+
+|  | |Recovered | Unrecovered |  | Rate P(recovered!treatment) |                      
+| -------------------------- | ----------- | ------------ | ------|------------ | ------|
+| All | Active |     0.166   |  0.334 |    0.5  | 0.332 |
+|  | Placebo |     0.216    |  0.284    |    0.5  | 0.432 |
+| Male | Active |     0.3    |  0.2    |    0.5  | 0.6 |
+|  | Placebo |     0.35    |  0.15    |    0.5  | 0.7 |
+| Femal | Active |     0.1    |  0.4    |    0.5  | 0.2 |
+|  | Placebo |     0.15    |  0.35    |    0.5  | .3 |
+
+3. Delta is the treatment effect on the absolute scale, and Rho is the treatment effect on the relative scale. Rho is relative because it is the ratio of the two quantities.
+
+4. From looking at the graph in scenario 1: Δ is -0.1 and ρ is 0.8
+ 
+From looking at the graph in scenario 2: Δ is -0.1 and ρ is 0.76852
+
+Delta(the treatment effect on the absolute scale) stays the same as the proportion of men/women in the trial changes. 
+
+5. Even though the data appeared to be identical between the medical and agricultural examples, in the agricultural example, height was not a confounding variable. It is a trait that is not known at planting, and it does not impact the variety of seed. Rather, variety impacts height. As a variable on the causal pathway, it would be inappriopriate to adjust/stratify on this trait.
+
+6. ![](ag-dag.svg)
+
+7. 
+
+```{r}
+
+diab <- sample(rep(1:2,times=c(12,13)), 25)
+nodiab <- sample(rep(1:2,times=c(38,37)),75)
+
+data.frame(
+    diabetes_assignment = c(diab, rep("",50)),
+    no_diabetes_assignment = nodiab
+)
+
+```
+
+
