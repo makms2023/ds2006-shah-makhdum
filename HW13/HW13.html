@@ -514,15 +514,18 @@ is the ratio of the two quantities.</p></li>
 <p>From looking at the graph in scenario 2: Δ is -0.1 and ρ is
 0.76852</p>
 <p>Delta(the treatment effect on the absolute scale) stays the same as
-the proportion of men/women in the trial changes.</p>
+the proportion of men/women in the trial changes. The expression for Δ
+is calculated to be = (.2/.5)a + 0.1/0.5 - (.2/.5)a - .15/.5 which will
+always be equal to 1. Note that “a” refers to the variable alpha.
+Meanwhile, ρ is calculated to be ((.2/.5)a + 0.1/0.5) / ((.2/.5)a -
+.15/.5).</p>
 <ol start="5" style="list-style-type: decimal">
-<li><p>Even though the data appeared to be identical between the medical
-and agricultural examples, in the agricultural example, height was not a
-confounding variable. It is a trait that is not known at planting, and
-it does not impact the variety of seed. Rather, variety impacts height.
-As a variable on the causal pathway, it would be inappriopriate to
-adjust/stratify on this trait.</p></li>
-<li><p><img src="ag-dag.svg" /></p></li>
+<li><p>While the data/numbers are identical in the agricultural example,
+height is not a confounding variable. This means that it is a trait that
+isn’t known at planting and does not effect the variety of the seed. It
+is a variable on the casual pathway and therefore, it doesn’t make sense
+to adjust/stratify this trait.</p></li>
+<li><p><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gQ3JlYXRlZCB3aXRoIElua3NjYXBlIChodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy8pIC0tPgoKPHN2ZwogICB3aWR0aD0iMTAwLjYzODM3bW0iCiAgIGhlaWdodD0iNDEuNjc0MTAzbW0iCiAgIHZpZXdCb3g9IjAgMCAxMDAuNjM4MzcgNDEuNjc0MTAzIgogICB2ZXJzaW9uPSIxLjEiCiAgIGlkPSJzdmcxIgogICB4bWxuczppbmtzY2FwZT0iaHR0cDovL3d3dy5pbmtzY2FwZS5vcmcvbmFtZXNwYWNlcy9pbmtzY2FwZSIKICAgeG1sbnM6c29kaXBvZGk9Imh0dHA6Ly9zb2RpcG9kaS5zb3VyY2Vmb3JnZS5uZXQvRFREL3NvZGlwb2RpLTAuZHRkIgogICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxzb2RpcG9kaTpuYW1lZHZpZXcKICAgICBpZD0ibmFtZWR2aWV3MSIKICAgICBwYWdlY29sb3I9IiNmZmZmZmYiCiAgICAgYm9yZGVyY29sb3I9IiMwMDAwMDAiCiAgICAgYm9yZGVyb3BhY2l0eT0iMC4yNSIKICAgICBpbmtzY2FwZTpzaG93cGFnZXNoYWRvdz0iMiIKICAgICBpbmtzY2FwZTpwYWdlb3BhY2l0eT0iMC4wIgogICAgIGlua3NjYXBlOnBhZ2VjaGVja2VyYm9hcmQ9IjAiCiAgICAgaW5rc2NhcGU6ZGVza2NvbG9yPSIjZDFkMWQxIgogICAgIGlua3NjYXBlOmRvY3VtZW50LXVuaXRzPSJtbSIgLz4KICA8ZGVmcwogICAgIGlkPSJkZWZzMSIgLz4KICA8ZwogICAgIGlua3NjYXBlOmxhYmVsPSJMYXllciAxIgogICAgIGlua3NjYXBlOmdyb3VwbW9kZT0ibGF5ZXIiCiAgICAgaWQ9ImxheWVyMSIKICAgICB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMzUuODA3ODc4LC03MC4zMDI2MTcpIj4KICAgIDx0ZXh0CiAgICAgICB4bWw6c3BhY2U9InByZXNlcnZlIgogICAgICAgc3R5bGU9ImZvbnQtc2l6ZTo4LjQ2NjY3cHg7bGluZS1oZWlnaHQ6MS4yO2ZvbnQtZmFtaWx5OidDb21pYyBTYW5zIE1TJzstaW5rc2NhcGUtZm9udC1zcGVjaWZpY2F0aW9uOidDb21pYyBTYW5zIE1TJztsZXR0ZXItc3BhY2luZzowcHg7ZmlsbDojZjdjM2NlO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDowLjUwMDk5OSIKICAgICAgIHg9IjM1LjQ1ODkzMSIKICAgICAgIHk9IjgzLjQ5MTk1OSIKICAgICAgIGlkPSJ0ZXh0MSI+PHRzcGFuCiAgICAgICAgIHNvZGlwb2RpOnJvbGU9ImxpbmUiCiAgICAgICAgIGlkPSJ0c3BhbjEiCiAgICAgICAgIHN0eWxlPSJzdHJva2Utd2lkdGg6MC41MDEiCiAgICAgICAgIHg9IjM1LjQ1ODkzMSIKICAgICAgICAgeT0iODMuNDkxOTU5Ij5WYXJpZXR5PC90c3Bhbj48L3RleHQ+CiAgICA8dGV4dAogICAgICAgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIKICAgICAgIHN0eWxlPSJmb250LXNpemU6OC40NjY2N3B4O2xpbmUtaGVpZ2h0OjEuMjtmb250LWZhbWlseTonQ29taWMgU2FucyBNUyc7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjonQ29taWMgU2FucyBNUyc7bGV0dGVyLXNwYWNpbmc6MHB4O2ZpbGw6I2Y3YzNjZTtzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6MC41MDA5OTkiCiAgICAgICB4PSIxMTYuOTM5MDMiCiAgICAgICB5PSI3Ny4yMDQ5MSIKICAgICAgIGlkPSJ0ZXh0MiI+PHRzcGFuCiAgICAgICAgIHNvZGlwb2RpOnJvbGU9ImxpbmUiCiAgICAgICAgIGlkPSJ0c3BhbjIiCiAgICAgICAgIHN0eWxlPSJzdHJva2Utd2lkdGg6MC41MDEiCiAgICAgICAgIHg9IjExNi45MzkwMyIKICAgICAgICAgeT0iNzcuMjA0OTEiPllpZWxkPC90c3Bhbj48L3RleHQ+CiAgICA8dGV4dAogICAgICAgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIKICAgICAgIHN0eWxlPSJmb250LXNpemU6OC40NjY2N3B4O2xpbmUtaGVpZ2h0OjEuMjtmb250LWZhbWlseTonQ29taWMgU2FucyBNUyc7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjonQ29taWMgU2FucyBNUyc7bGV0dGVyLXNwYWNpbmc6MHB4O2ZpbGw6I2Y3YzNjZTtzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6MC41MDA5OTkiCiAgICAgICB4PSI4Mi4yMzQ1NDMiCiAgICAgICB5PSIxMDkuMzk0NTgiCiAgICAgICBpZD0idGV4dDMiPjx0c3BhbgogICAgICAgICBzb2RpcG9kaTpyb2xlPSJsaW5lIgogICAgICAgICBpZD0idHNwYW4zIgogICAgICAgICBzdHlsZT0ic3Ryb2tlLXdpZHRoOjAuNTAxIgogICAgICAgICB4PSI4Mi4yMzQ1NDMiCiAgICAgICAgIHk9IjEwOS4zOTQ1OCI+SGVpZ2h0PC90c3Bhbj48L3RleHQ+CiAgICA8cGF0aAogICAgICAgc3R5bGU9ImZpbGw6bm9uZTtmaWxsLXJ1bGU6ZXZlbm9kZDtzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6MC4yNjQ1ODNweDtzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2Utb3BhY2l0eToxIgogICAgICAgZD0iTSA2Ni42NDI2NzUsODEuNzMxNTgyIDExMy42Njk3Nyw3Ni43MDE5NDUiCiAgICAgICBpZD0icGF0aDMiCiAgICAgICBpbmtzY2FwZTpjb25uZWN0b3ItdHlwZT0icG9seWxpbmUiCiAgICAgICBpbmtzY2FwZTpjb25uZWN0b3ItY3VydmF0dXJlPSIwIiAvPgogICAgPHBhdGgKICAgICAgIHN0eWxlPSJmaWxsOm5vbmU7ZmlsbC1ydWxlOmV2ZW5vZGQ7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjAuMjY0NTgzcHg7c3Ryb2tlLWxpbmVjYXA6YnV0dDtzdHJva2UtbGluZWpvaW46bWl0ZXI7c3Ryb2tlLW9wYWNpdHk6MSIKICAgICAgIGQ9Ik0gMTEwLjY1MTk5LDEwMy42MTA1IDEyMS4yMTQyMiw4MS43MzE1ODIiCiAgICAgICBpZD0icGF0aDQiCiAgICAgICBpbmtzY2FwZTpjb25uZWN0b3ItdHlwZT0icG9seWxpbmUiCiAgICAgICBpbmtzY2FwZTpjb25uZWN0b3ItY3VydmF0dXJlPSIwIiAvPgogICAgPHBhdGgKICAgICAgIHN0eWxlPSJmaWxsOm5vbmU7ZmlsbC1ydWxlOmV2ZW5vZGQ7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjAuMjY0NTgzcHg7c3Ryb2tlLWxpbmVjYXA6YnV0dDtzdHJva2UtbGluZWpvaW46bWl0ZXI7c3Ryb2tlLW9wYWNpdHk6MSIKICAgICAgIGQ9Ik0gNjEuODY0NTIsODcuMjY0MTgxIDc4LjcxMzgsMTA0LjExMzQ2IgogICAgICAgaWQ9InBhdGg1IgogICAgICAgaW5rc2NhcGU6Y29ubmVjdG9yLXR5cGU9InBvbHlsaW5lIgogICAgICAgaW5rc2NhcGU6Y29ubmVjdG9yLWN1cnZhdHVyZT0iMCIgLz4KICAgIDxwYXRoCiAgICAgICBzdHlsZT0iZGlzcGxheTppbmxpbmU7ZmlsbDpub25lO2ZpbGwtcnVsZTpldmVub2RkO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDowLjI2NDU4M3B4O3N0cm9rZS1saW5lY2FwOmJ1dHQ7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1vcGFjaXR5OjEiCiAgICAgICBkPSJtIDEwOS42NDYwNiw3My40MzI2ODIgNS4wMjk2NCwzLjc3MjIyOSIKICAgICAgIGlkPSJwYXRoNiIKICAgICAgIGlua3NjYXBlOmNvbm5lY3Rvci10eXBlPSJwb2x5bGluZSIKICAgICAgIGlua3NjYXBlOmNvbm5lY3Rvci1jdXJ2YXR1cmU9IjAiIC8+CiAgICA8cGF0aAogICAgICAgc3R5bGU9ImZpbGw6bm9uZTtmaWxsLXJ1bGU6ZXZlbm9kZDtzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6MC4yNjQ1ODNweDtzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2Utb3BhY2l0eToxIgogICAgICAgZD0ibSAxMTEuMTU0OTUsODUuNzU1MjkxIDMuMDE3NzgsLTguMjk4ODk5IgogICAgICAgaWQ9InBhdGg3IgogICAgICAgaW5rc2NhcGU6Y29ubmVjdG9yLXR5cGU9InBvbHlsaW5lIgogICAgICAgaW5rc2NhcGU6Y29ubmVjdG9yLWN1cnZhdHVyZT0iMCIgLz4KICAgIDxwYXRoCiAgICAgICBzdHlsZT0iZmlsbDpub25lO2ZpbGwtcnVsZTpldmVub2RkO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDowLjI2NDU4M3B4O3N0cm9rZS1saW5lY2FwOmJ1dHQ7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1vcGFjaXR5OjEiCiAgICAgICBkPSJtIDEyMS40NjU3MSw4MS40ODAxMDEgMi41MTQ4MSw1LjAyOTYzNiIKICAgICAgIGlkPSJwYXRoOCIKICAgICAgIGlua3NjYXBlOmNvbm5lY3Rvci10eXBlPSJwb2x5bGluZSIKICAgICAgIGlua3NjYXBlOmNvbm5lY3Rvci1jdXJ2YXR1cmU9IjAiIC8+CiAgICA8cGF0aAogICAgICAgc3R5bGU9ImZpbGw6bm9uZTtmaWxsLXJ1bGU6ZXZlbm9kZDtzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6MC4yNjQ1ODNweDtzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2Utb3BhY2l0eToxIgogICAgICAgZD0ibSAxMTUuNjgxNjIsODMuMjQwNDc0IDUuNTMyNiwtMi4yNjMzMzgiCiAgICAgICBpZD0icGF0aDkiCiAgICAgICBpbmtzY2FwZTpjb25uZWN0b3ItdHlwZT0icG9seWxpbmUiCiAgICAgICBpbmtzY2FwZTpjb25uZWN0b3ItY3VydmF0dXJlPSIwIiAvPgogICAgPHBhdGgKICAgICAgIHN0eWxlPSJkaXNwbGF5OmlubGluZTtmaWxsOm5vbmU7ZmlsbC1ydWxlOmV2ZW5vZGQ7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjAuMjY0NTgzcHg7c3Ryb2tlLWxpbmVjYXA6YnV0dDtzdHJva2UtbGluZWpvaW46bWl0ZXI7c3Ryb2tlLW9wYWNpdHk6MSIKICAgICAgIGQ9Ik0gNzkuMjE2NzY1LDEwNC44Njc5MSA3OC45NjUyODQsOTguMzI5MzgxIgogICAgICAgaWQ9InBhdGgxMCIKICAgICAgIGlua3NjYXBlOmNvbm5lY3Rvci10eXBlPSJwb2x5bGluZSIKICAgICAgIGlua3NjYXBlOmNvbm5lY3Rvci1jdXJ2YXR1cmU9IjAiIC8+CiAgICA8cGF0aAogICAgICAgc3R5bGU9ImZpbGw6bm9uZTtmaWxsLXJ1bGU6ZXZlbm9kZDtzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6MC4yNjQ1ODNweDtzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2Utb3BhY2l0eToxIgogICAgICAgZD0ibSA3Mi45Mjk3MiwxMDYuNjI4MjggNi43OTAwMDcsLTEuNTA4ODkiCiAgICAgICBpZD0icGF0aDExIgogICAgICAgaW5rc2NhcGU6Y29ubmVjdG9yLXR5cGU9InBvbHlsaW5lIgogICAgICAgaW5rc2NhcGU6Y29ubmVjdG9yLWN1cnZhdHVyZT0iMCIgLz4KICA8L2c+Cjwvc3ZnPgo=" /></p></li>
 <li></li>
 </ol>
 <pre class="r"><code>diab &lt;- sample(rep(1:2,times=c(12,13)), 25)
@@ -534,79 +537,79 @@ data.frame(
 )</code></pre>
 <pre><code>##    diabetes_assignment no_diabetes_assignment
 ## 1                    2                      2
-## 2                    1                      2
+## 2                    2                      2
 ## 3                    1                      1
-## 4                    1                      2
-## 5                    2                      2
+## 4                    1                      1
+## 5                    2                      1
 ## 6                    2                      1
-## 7                    2                      1
-## 8                    2                      1
-## 9                    1                      2
-## 10                   1                      1
-## 11                   1                      2
+## 7                    2                      2
+## 8                    2                      2
+## 9                    1                      1
+## 10                   1                      2
+## 11                   2                      1
 ## 12                   2                      2
 ## 13                   1                      2
-## 14                   1                      2
+## 14                   1                      1
 ## 15                   2                      1
-## 16                   2                      2
-## 17                   1                      1
-## 18                   2                      1
-## 19                   1                      1
-## 20                   2                      2
-## 21                   2                      1
-## 22                   2                      1
-## 23                   1                      1
-## 24                   1                      2
+## 16                   1                      1
+## 17                   1                      2
+## 18                   1                      2
+## 19                   2                      1
+## 20                   1                      2
+## 21                   1                      1
+## 22                   2                      2
+## 23                   1                      2
+## 24                   2                      1
 ## 25                   2                      1
-## 26                                          1
+## 26                                          2
 ## 27                                          1
-## 28                                          2
-## 29                                          2
-## 30                                          2
+## 28                                          1
+## 29                                          1
+## 30                                          1
 ## 31                                          1
-## 32                                          1
+## 32                                          2
 ## 33                                          1
-## 34                                          2
+## 34                                          1
 ## 35                                          1
-## 36                                          2
-## 37                                          1
+## 36                                          1
+## 37                                          2
 ## 38                                          1
-## 39                                          1
+## 39                                          2
 ## 40                                          1
-## 41                                          2
-## 42                                          2
-## 43                                          1
+## 41                                          1
+## 42                                          1
+## 43                                          2
 ## 44                                          2
 ## 45                                          2
 ## 46                                          1
-## 47                                          1
+## 47                                          2
 ## 48                                          2
-## 49                                          1
-## 50                                          2
-## 51                                          2
-## 52                                          1
-## 53                                          1
-## 54                                          1
+## 49                                          2
+## 50                                          1
+## 51                                          1
+## 52                                          2
+## 53                                          2
+## 54                                          2
 ## 55                                          2
-## 56                                          1
-## 57                                          1
+## 56                                          2
+## 57                                          2
 ## 58                                          2
 ## 59                                          2
-## 60                                          2
+## 60                                          1
 ## 61                                          2
 ## 62                                          1
 ## 63                                          2
 ## 64                                          2
 ## 65                                          1
-## 66                                          2
+## 66                                          1
 ## 67                                          2
-## 68                                          2
-## 69                                          2
+## 68                                          1
+## 69                                          1
 ## 70                                          1
-## 71                                          2
+## 71                                          1
 ## 72                                          1
-## 73                                          1
-## 74                                          1
+## 73                                          2
+## 74                                          2
 ## 75                                          2</code></pre>
 </div>
 

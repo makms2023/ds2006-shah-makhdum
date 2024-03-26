@@ -39,9 +39,10 @@ knitr::opts_chunk$set(echo = TRUE)
  
 From looking at the graph in scenario 2: Δ is -0.1 and ρ is 0.76852
 
-Delta(the treatment effect on the absolute scale) stays the same as the proportion of men/women in the trial changes. 
+Delta(the treatment effect on the absolute scale) stays the same as the proportion of men/women in the trial changes. The expression for Δ is calculated to be = (.2/.5)a + 0.1/0.5 - (.2/.5)a - .15/.5 which will always be equal to 1. Note that "a" refers to the variable alpha. Meanwhile, ρ is calculated to be  ((.2/.5)a + 0.1/0.5) / ((.2/.5)a - .15/.5). 
 
-5. Even though the data appeared to be identical between the medical and agricultural examples, in the agricultural example, height was not a confounding variable. It is a trait that is not known at planting, and it does not impact the variety of seed. Rather, variety impacts height. As a variable on the causal pathway, it would be inappriopriate to adjust/stratify on this trait.
+5. While the data/numbers are identical in the agricultural example, height is not a confounding variable. This means that it is a trait that isn't known at planting and does not effect the variety of the seed. It is a variable on the casual pathway and therefore, it doesn't make sense to adjust/stratify this trait. 
+
 
 6. ![](ag-dag.svg)
 
