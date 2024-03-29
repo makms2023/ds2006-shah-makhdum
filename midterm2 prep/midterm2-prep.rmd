@@ -1,0 +1,255 @@
+---
+title: "DS 2006 Midterm 1 Prep Questions"
+output: html_document
+---
+
+# NAME: **Makhdum Mourad Shah**
+
+**NOTE:** The `.rmd` version of the file is available here: [(link)](https://tgstewart.cloud/midterm2-prep.rmd)
+
+## Instructions
+
+Please prepare reponses/solutions for the following questions.  On the day of the exam, you will be given a new set of questions.  You will use the solutions you've prepared for this exam during the exam.  
+
+During the exam, you will also be permitted to access the internet for publicly available content.  You will not be allowed to communicate with anyone via the internet or any other means during the exam. This includes, but is not limited to: 
+
+* No messaging, emailing, or using social media to contact others. 
+* No posting questions or seeking answers on forums, chat rooms, chat bots (including large language models like ChatGPT), or any collaborative platforms. 
+* No sharing or discussing exam content with peers through any online or electronic medium.
+
+You may **NOT** discuss any aspect of the exam or prep questions with anyone other than the instructor or TA.  You may **NOT** share code or documents.
+
+## Submission instructions
+
+1.  Within your course repo, create a folder called `Midterm2`
+1.  Within the folder, create the script file `exam-prep.rmd` with your solutions.  Create a rendered report in `.pdf` output.
+1. Add, commit, and push to your repo on github.com.
+
+## Questions
+
+Exam questions are organized into sections cooresponding to the learning outcomes of the course.  
+
+### Section 1. Tools of the data scientists
+
+>Learning objective: Use the tools of data scientists
+
+>Learning objective:  Implement best programming/coding practices
+
+1.1 Write your name at the prompt above (line 6 in the script).
+
+1.2 When you are done with the exam, please render this report as a pdf document.
+
+1.3 Please explain the advantages of relative file paths over absolute file paths.
+
+quicker to type, 
+more flexible and portable, don't rely on the specific file system structure, u can copy or move files around without having to change the paths that refer to them.
+this allows u to share your work with other people, reproducibilty
+
+
+### Section 2. Probability
+
+>Learning objective: Compare and contrast different definitions of probability, illustrating differences with simple examples
+
+>Learning objective: Express the rules of probability verbally, mathematically, and computationally.
+
+2.1 Machines A, B, and C generate widgets with a defect rate of 0.1, 0.01, and 0.001, respectively. Machine A generates twice as many widgets as B, and machine B generates twice as many widgets as machine C. 
+
+Please complete the cross table below based on the information above.
+
+Hints:
+
+* P(A) = 2*P(B) = 4*P(B), which means P(A) = 4/7, P(B) = 2/7 and P(C) = 1/7.
+
+|            |  A  |  B  |  C  |     |
+|:-----------|:---:|:---:|:---:|:---:|
+| Defective  |   0.06  |  0.002   |   0.0001  | 0.0621   |
+| → cell     |     |     |     |     |
+| → row      |     |     |     |     |
+| → col      |     |     |     |     |
+| Functional |   0.514  |  0.282   |   0.1420  |  0.938   |
+| → cell     |     |     |     |     |
+| → row      |     |     |     |     |
+| → col      |     |     |     |     |
+|            |  4/7   |  2/7   |  1/7   |   1  |
+
+2.2 If you did not know if a widget was functional or defective, what would be the probability that the widget is from machine A?  Write the solution using mathematical notation, as in P(???) = ???.
+
+P(A)=4/7
+
+2.3 How would you update the probability from 2.3 if you knew the widget was defective? Write the solution using mathematical notation, as in P(???) = ???.
+
+P(A|Defective)= 0.06/0.0621= 0.95
+
+### Section 3. Simulation
+
+>Learning objective: Use probability models to build simulations of complex real world processes to answer research questions
+
+3.1 In class and homework, you solved the birthday problem.  The script we developed in class to solve the problem is below.  Calculate the probability of a shared birthday for a class of size 20 with the code using only 30 replicates. 
+
+```{r}
+generate_class <- function(class_size){
+  sample(1:365, class_size, replace=TRUE)
+}
+
+check_birthday <- function(class){
+  class |> 
+    duplicated() |> 
+    any()
+}
+
+set.seed(230583)
+R <- 30
+replicates <- replicate(R, generate_class(20) |> check_birthday())
+mean(replicates)
+```
+
+
+3.2 Using the exact same number of replicates and class size, repeat the process of calculating the shared birthday probability 1000 times.  Create a histogram of the 1000 estimates of the probability.  The analytic solution to the birthday problem is
+
+\[
+1-\frac{365!}{365^k(365-k)!}
+\]
+
+where $k$ is the class size.  Add the analytic solution as a vertical reference line using the `abline` command.
+
+```{r}
+
+R <- 30
+out <- rep(NA, 1000)
+for(i in 1:length(out)){
+  replicates <- replicate(R, generate_class(20) |> check_birthday())
+  out[i] <- mean(replicates)
+}
+hist(out, breaks = 100, freq = FALSE, main = "Histogram of 1000 estimates of the shared birthday probability")
+box()
+
+birthday_prob <- function(k) 1 - exp(lfactorial(365) - lfactorial(365-k) - k*log(365))
+x<-birthday_prob(20)
+
+abline(v = x, col = "red", lwd = 2)
+
+min_estimate <- min(out)
+max_estimate <- max(out)
+min_estimate
+max_estimate
+
+true_value <- birthday_prob(20)
+
+# Calculate absolute errors for each estimate
+absolute_errors <- abs(out - true_value)
+
+# Calculate the average absolute error
+average_absolute_error <- mean(absolute_errors)
+
+average_absolute_error
+```
+
+3.3 What is the range (min and max) of the 1000 values you generated for the birthday probability estimate?
+
+3.4 What is the average absolute error of the 1000 estimates?
+
+3.5 If you wanted to reduced the average absolute error by half, how many replicates (R) would you need to use?
+In order to reduce the error by half, the number of replicates must be quadrupled! the formula which explain the relationship berween error that we used in deliverable 2 is E=2^alpha/sqrt(4R)
+
+3.6 Generate a plot of overlapping histograms to show the difference between R=30 and your R from the previous problem.
+
+
+```{r}
+R2 <- 120 # Change this
+out2 <- rep(NA, 1000)
+for(i in 1:length(out2)){
+  replicates <- replicate(R2, generate_class(20) |> check_birthday())
+  out2[i] <- mean(replicates)
+}
+
+bins <- seq(0,1,by = 0.01)
+hist(out, breaks = bins, col = "#ffabab50", freq = FALSE, main = "Histogram of 1000 estimates of the shared birthday probability")
+hist(out2, breaks = bins, add=TRUE, col = "#6488ea59", freq = FALSE)
+
+true_value <- birthday_prob(20)
+
+# Calculate absolute errors for each estimate
+absolute_errors <- abs(out2 - true_value)
+
+# Calculate the average absolute error
+average_absolute_error <- mean(absolute_errors)
+
+average_absolute_error
+
+```
+
+3.7 Calculate the average absolute error of the 1000 estimates generate with the new choice of R?  Did it change as you expected it to?
+
+yes it decreased by half! to 0.035
+
+### Section 4. Diagnostics
+
+>Learning objective: apply cross table framework to the special case of binary outcomes
+
+4.1 Suppose the prevalence of disease X is 0.1, and you are tasked with finding a diagnostic test so that the positive predictive value is 0.95.  If the specificity of the test is 0.9, what must the sensitivity be?
+
+look at table
+
+
+### Section 5. Confounding vs Causal Pathway
+
+>Learning objective: define/describe confounding variables, Simpson's paradox, DAGs, and the causal pathway
+
+5.1 The following function generates data from a cohort of individuals who were diagnosed with disease X.  In the dataset, there is vaccination status, disease severity, and disease duration.
+
+Generate 1000 draws from the function and create the cross table for vaccination status and disease duration.  Calculate a summary of the effect of vaccination by calculating the difference is conditional probabilities:
+
+\[
+\Delta = P(\text{Short recovery}|\text{vaccinated}) - P(\text{Short recovery}|\text{unvaccinated})
+\]
+
+
+```{r}
+library(magrittr)
+
+vax_data <- function(R){
+    vs <- rbinom(R,1,.5)
+    ds <- rbinom(R,1,.25*(vs==1)+.75*(vs==0))
+    rt <- rbinom(R,1,.7*(ds==1)+.5*(ds==0))
+    data.frame(
+        vaccination_status = c("vaccinated","unvaccinated")[vs+1]
+      , disease_severity = c("mild","severe")[ds+1]
+      , recovery_time = c("short","long")[rt+1]
+    )
+}
+
+d1<-vax_data(1000)
+cross_table <- table(d1$vaccination_status, d1$recovery_time)%>%proportions()%>%addmargins()
+cross_table
+
+d2<-d1[d1$disease_severity=="mild", ]
+table(d2$vaccination_status, d2$recovery_time)%>%proportions()%>%addmargins()
+
+d3<-d1[d1$disease_severity=="severe", ]
+table(d3$vaccination_status, d3$recovery_time)%>%proportions()%>%addmargins()
+
+
+
+```
+
+
+the summary of the treatment effect in the combined table: difference in the probability of short recovery between vaccinated and unvaccinated individuals is -0.103
+
+5.2 Stratify the table by disease severity.  As in the previous problem, calculate the same treatment effect in each strata.
+
+the summary of the treatment effect in the stratified tables: 
+
+mild= difference in the probability of short recovery between vaccinated and unvaccinated individuals is 0.027
+
+severe= difference in the probability of short recovery between vaccinated and unvaccinated individuals is 0.019
+
+5.3 Based on the summary of the treatment effect that you observe in the combined and stratified tables, does vaccination help shorten recovery?
+
+Given that Delta is negative for the treatment effect in the combined table, this suggests that vaccination does not help shorten recovery. furthermore, in both stratified tables, the treatment effect is near 0, also suggesting that vaccination does not improve recovery times. Therefore, based on these findings, it seems that vaccination may not have a substantial impact on shortening recovery time, regardless of disease severity.
+
+5.4 Which measure of treatment effect is most persuasive?  The combined estimate or the stratified estimates?  Which estimate should you rely on?  Explain why, creating a DAG to represent relationship between the variables.
+
+The combined estimate is the most persuasive, because it is only looking at the relationship between vaccination status and recover time. This is what we need. The severity of the disease is irrelevant to us as it is unknown at the time of vaccination. Therefore, it is not a confounding variable. 
+
+![](IMG_2253.png)
+
