@@ -1,0 +1,64 @@
+---
+title: "HW 14"
+output: md_document
+date: "2024-04-18"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 
+
+```{r}
+
+rws <- function(r,k,p_A){
+
+    t(replicate(r,{
+
+        s <- rbinom(2*k-1,1,p_A)
+
+        o <- 1*(sum(s)>=k)
+
+        s_star <- if(o==1){s}else{1-s}
+
+        n <- which(cumsum(s_star) == k)[1]
+
+        c(team=o, games=n)
+
+    }))
+
+}
+
+ 
+```
+
+## Generate 5000 draws from the world series distribution.
+
+
+
+```{r}
+draws<-rws(5000,6, 0.45)
+head(draws)
+```
+## With the draws, create the contingency table with number of games as the row variable and winner as the column variable. Include conditional probabilities.
+
+```{r}
+
+library(magrittr)
+
+results_df <- data.frame(number_of_games = draws[, 2], winner = draws[, 1])
+
+
+contingency_table <- table(results_df$number_of_games, results_df$winner)
+conditional_probabilities <- contingency_table %>% proportions() %>%
+  addmargins()
+
+print(contingency_table)
+
+print(conditional_probabilities)
+```
+
+## Supposing that the world series ends in 2k-1 games, what is the probability that team A will win?
+### The probability that Team A wins will be the sum of all the conditional probabilities of the Team A column which is this case is 0.6146.
+
